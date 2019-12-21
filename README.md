@@ -1,18 +1,17 @@
 # vue-multi-page
 
-## Project setup
+### 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行项目A
 ```
-npm run serve
+npm run d projectA
 ```
-
-### Compiles and minifies for production
+### 打包项目A
 ```
-npm run build
+npm run b projectA
 ```
 
 ### Lints and fixes files

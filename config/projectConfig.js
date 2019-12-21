@@ -22,7 +22,8 @@ const config = {
           filename: 'index.html',
         }
       }
-    }
+    },
+    // 更多...
 }
 
 const configObj = config[projectName.name]
