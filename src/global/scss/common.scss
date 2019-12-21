@@ -1,0 +1,124 @@
+
+@mixin absolute-middle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+// 1px 边框，四条边
+@mixin border-1px-4($radius, $color) {
+    position: relative;
+    border: none;
+    border-radius: $radius;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid $color;
+        border-radius: $radius;
+        box-sizing: border-box;
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+        transform-origin: left top;
+    }
+}
+
+// --- 移动端 border 1px 问题 ---
+
+// 边框四条边全包裹
+@mixin one_px_borderA($color, $radius...) {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        border: {
+            width: 1px;
+            style: solid;
+            color: $color;
+        }
+        border-radius: $radius;
+        transform-origin: 0 0;
+        transform: scale(0.5);
+        box-sizing: border-box;
+    }
+}
+
+@mixin borderHoriz {
+    content: '';
+    position: absolute;
+    left: 0;
+    // width: 100%;
+    // height: 1px;
+    transform: scaleY(0.5);
+}
+// 边框水平方向
+@mixin one_px_borderHoriz($color: #e6e6ea, $dir: top, $weight: 0.5px) {
+    position: relative;
+    $d: $dir;
+    @if $dir == all {
+        $d: top;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        #{$dir}: 0;
+        left: 0;
+        width: 100%;
+        height: $weight;
+        @include borderHoriz();
+        #{$d}: 0;
+        background-color: $color;
+    }
+    @if $dir == all {
+        &::after {
+            @include borderHoriz();
+            bottom: 0;
+            width: 100%;
+            height: $weight;
+            background-color: $color;
+        }
+    }
+}
+
+@mixin borderVerti() {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 1px;
+    transform: scaleX(0.5);
+    bottom: 0;
+    margin: auto;
+}
+// 边框垂直方向
+@mixin one_px_borderVerti($color, $dir: left, $height: 100%) {
+    position: relative;
+    $d: $dir;
+    @if $dir == all {
+        $d: left;
+    }
+    &::before {
+        @include borderVerti();
+        #{$d}: 0;
+        background-color: $color;
+        height: $height;
+    }
+    @if $dir == all {
+        &::after {
+            @include borderVerti();
+            right: 0;
+            background-color: $color;
+            height: $height;
+        }
+    }
+}
