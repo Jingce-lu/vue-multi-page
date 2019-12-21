@@ -1,7 +1,7 @@
 const projectName = require('./project')
 
 const config = {
-    //活动1
+    //项目A
     projectA: {
       pages: {
         index: {
@@ -9,11 +9,10 @@ const config = {
           outputDir: "dist/projectA/",
           template: 'public/index.html',
           filename: 'index.html',
-          title: 'projectA Page',
         }
       }
     },
-    //活动2
+    //项目B
     projectB: {
       pages: {
         index: {

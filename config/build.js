@@ -1,6 +1,6 @@
 let projectName = process.argv[2]
 
-console.log('正在运行的项目名————————————————————', projectName);
+console.log('\x1B[32m','————————————————您正在打包的项目名是————————————————', projectName);
 
 let fs = require('fs')
 
